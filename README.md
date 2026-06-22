@@ -51,9 +51,10 @@ CryptoBar is a lightweight macOS menu bar application that displays real-time cr
 
 ## Quick Start
 
-Download the latest version:
+1. Download the latest release: https://github.com/erdwin90/crypto-bar-mac/releases/latest
+2. Open the .dmg file and install the app
+3. Launch CryptoBar — it will appear in your menu bar
 
-[Download CryptoBar (.dmg)](https://github.com/erdwin90/CryptoBar/releases/latest)
 
 
 ## Usage
