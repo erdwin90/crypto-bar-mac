@@ -1,0 +1,2 @@
+<key>LSUIElement</key>
+<true/>
