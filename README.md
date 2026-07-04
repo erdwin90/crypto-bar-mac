@@ -29,7 +29,7 @@ CryptoBar is a lightweight macOS menu bar application that displays real-time cr
 <table>
 <tr>
 <td>
-<img src="assets/CryptoBarShow.png" >
+<img src="assets/CryptoBar.png" >
 </td>
 <td>
 <img src="assets/CryptoBarShowTRX.png" >
