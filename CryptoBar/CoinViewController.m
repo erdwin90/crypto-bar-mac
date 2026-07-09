@@ -39,8 +39,7 @@
     self.coins = normalized;
     self.filteredCoins = [self.coins mutableCopy];
 
-
-     [self buildUI];
+    [self buildUI];
 
     [self refreshCoins];
 
@@ -222,98 +221,98 @@
         NSMakeRect(34,15,44,44)];
 
 
-iconContainer.wantsLayer = YES;
+    iconContainer.wantsLayer = YES;
 
-iconContainer.layer.cornerRadius = 22;
+    iconContainer.layer.cornerRadius = 22;
 
-iconContainer.layer.backgroundColor =
+    iconContainer.layer.backgroundColor =
         [[NSColor colorWithWhite:1.0
                            alpha:0.02] CGColor];
 
 
 
-iconContainer.layer.borderWidth = 1.5;
+    iconContainer.layer.borderWidth = 1.5;
 
-iconContainer.layer.borderColor =
-    [[NSColor colorWithWhite:1.0
+    iconContainer.layer.borderColor =
+        [[NSColor colorWithWhite:1.0
                        alpha:0.1] CGColor];
 
-[cell addSubview:iconContainer];
+    [cell addSubview:iconContainer];
 
-NSButton *favButton =
-[[NSButton alloc] initWithFrame:NSMakeRect(8, 27, 20, 20)];
+    NSButton *favButton =
+    [[NSButton alloc] initWithFrame:NSMakeRect(8, 27, 20, 20)];
 
-favButton.bordered = NO;
-favButton.wantsLayer = YES;
-favButton.layer.backgroundColor =
-    [[NSColor clearColor] CGColor];
+    favButton.bordered = NO;
+    favButton.wantsLayer = YES;
+    favButton.layer.backgroundColor =
+        [[NSColor clearColor] CGColor];
 
-favButton.target = self;
-favButton.action = @selector(toggleFavorite:);
-favButton.identifier = coin[@"symbol"];
+    favButton.target = self;
+    favButton.action = @selector(toggleFavorite:);
+    favButton.identifier = coin[@"symbol"];
 
-favButton.focusRingType = NSFocusRingTypeNone;
-favButton.alignment = NSTextAlignmentCenter;
+    favButton.focusRingType = NSFocusRingTypeNone;
+    favButton.alignment = NSTextAlignmentCenter;
 
-favButton.imagePosition = NSNoImage;
-favButton.enabled = YES; 
+    favButton.imagePosition = NSNoImage;
+    favButton.enabled = YES; 
 
-BOOL isFav = [coin[@"favorite"] boolValue];
+    BOOL isFav = [coin[@"favorite"] boolValue];
 
 
-NSImage *img = nil;
+    NSImage *img = nil;
 
-if (isFav) {
-    img = [NSImage imageWithSystemSymbolName:@"star.fill"
-                      accessibilityDescription:nil];
-} else {
-    img = [NSImage imageWithSystemSymbolName:@"star"
-                      accessibilityDescription:nil];
-}
+    if (isFav) {
+        img = [NSImage imageWithSystemSymbolName:@"star.fill"
+                          accessibilityDescription:nil];
+    } else {
+        img = [NSImage imageWithSystemSymbolName:@"star"
+                          accessibilityDescription:nil];
+    }
 
-favButton.image = img;
-favButton.imagePosition = NSImageOnly;
-favButton.contentTintColor = isFav ? [NSColor systemYellowColor] : [NSColor secondaryLabelColor];
+    favButton.image = img;
+    favButton.imagePosition = NSImageOnly;
+    favButton.contentTintColor = isFav ? [NSColor systemYellowColor] : [NSColor secondaryLabelColor];
 
-[cell addSubview:favButton];
+    [cell addSubview:favButton];
 
-NSImageView *icon =
-    [[NSImageView alloc]
+    NSImageView *icon =
+        [[NSImageView alloc]
+            initWithFrame:
+            NSMakeRect(6,6,32,32)];
+
+    NSString *coinSymbol =
+        [coin[@"symbol"] lowercaseString];
+
+    NSString *iconPath =
+    [[NSBundle mainBundle]
+     pathForResource:coinSymbol
+     ofType:@"png"
+     inDirectory:@"icons"];
+
+    NSImage *image =
+        [[NSImage alloc]
+            initWithContentsOfFile:iconPath];
+
+    if (image)
+    {
+       icon.image = image;
+    [iconContainer addSubview:icon];
+    }
+    else
+    {
+       NSView *fallback =
+        [[NSView alloc]
         initWithFrame:
         NSMakeRect(6,6,32,32)];
 
-NSString *coinSymbol =
-    [coin[@"symbol"] lowercaseString];
-
-NSString *iconPath =
-[[NSBundle mainBundle]
- pathForResource:coinSymbol
- ofType:@"png"
- inDirectory:@"icons"];
-
-NSImage *image =
-    [[NSImage alloc]
-        initWithContentsOfFile:iconPath];
-
-if (image)
-{
-   icon.image = image;
-[iconContainer addSubview:icon];
-}
-else
-{
-   NSView *fallback =
-    [[NSView alloc]
-        initWithFrame:
-        NSMakeRect(6,6,32,32)];
-
-fallback.wantsLayer = YES;
-fallback.layer.cornerRadius = 16;
-fallback.layer.backgroundColor =
-    [[NSColor orangeColor] CGColor];
+    fallback.wantsLayer = YES;
+    fallback.layer.cornerRadius = 16;
+    fallback.layer.backgroundColor =
+        [[NSColor orangeColor] CGColor];
 
     [iconContainer addSubview:fallback];
-}
+    }
 
     NSTextField *name =
         [[NSTextField alloc]
