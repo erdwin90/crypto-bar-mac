@@ -21,6 +21,8 @@ CryptoBar is a lightweight macOS menu bar application that displays real-time cr
  
 </p>
 
+[English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
+
 ---
 
 CryptoBar is a lightweight macOS menu bar application that displays real-time cryptocurrency prices using the CoinGecko API. It also shows 24-hour price charts for quick market trend overview directly in the menu bar.
